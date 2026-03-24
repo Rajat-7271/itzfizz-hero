@@ -29,7 +29,7 @@ npm run deploy
 
 After deploying, go to your repo → Settings → Pages → set source to `gh-pages` branch.
 
-Live at: `https://<your-username>.github.io/itzfizz-hero/`
+Live at: `https://rajat-7271.github.io/itzfizz-hero/`
 
 ---
 
