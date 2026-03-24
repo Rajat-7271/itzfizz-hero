@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* my custom vars, keeping everything in one place */
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --accent: #d4f542;
+  --accent2: #ff3c00;
+  --text: #f0f0e8;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* cursor */
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(212, 245, 66, 0.35);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.38s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+/* subtle bg grid */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* scroll indicator anim */
+@keyframes scrollDown {
+  0%   { transform: translateY(-30px); }
+  100% { transform: translateY(60px); }
+}
+.scroll-thumb-anim {
+  animation: scrollDown 1.6s ease-in-out infinite;
+}
+
+.stat-item {
+  transition: background 0.25s;
+}
+.stat-item:hover {
+  background: rgba(212, 245, 66, 0.03);
+}
+
+/* card bottom border reveal on hover */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+.feature-card:hover::after { width: 100%; }
+.feature-card:hover { background: rgba(212, 245, 66, 0.025); }
+
+/* ghost headline - outline only */
+.headline-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(240, 240, 232, 0.13);
+}
